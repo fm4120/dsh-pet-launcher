@@ -1,0 +1,4 @@
+node_modules/
+# your own pet list — copy pets.example.json to pets.json and edit that
+pets.json
+*.log

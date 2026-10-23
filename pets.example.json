@@ -1,0 +1,41 @@
+{
+  "pets": [
+    {
+      "id": "demo-exe",
+      "label": "示例：直接拉起一个程序",
+      "enabled": false,
+      "kind": "exe",
+      "target": "C:\\Windows\\System32\\notepad.exe",
+      "args": [],
+      "cwd": "C:\\Windows",
+      "detect": { "imageName": "notepad.exe" },
+      "note": "kind=exe：插件自己 spawn，child.pid 可靠。enabled=false 时按钮灰显「已禁用」。",
+      "killOnHostExit": true
+    },
+    {
+      "id": "demo-cmd",
+      "label": "示例：走 cmd /c 的启动器",
+      "enabled": false,
+      "kind": "cmd",
+      "target": "C:\\path\\to\\launcher.cmd",
+      "cwd": "C:\\path\\to",
+      "detect": {
+        "imageName": "my-pet.exe",
+        "imagePath": "C:\\path\\to\\my-pet.exe"
+      },
+      "note": "kind=cmd：cmd 会立刻退出，真身是它 start 出去的 exe。所以「是否在跑」必须靠 detect 扫进程认领，且 imagePath 要写全（同名的 pythonw.exe 可能有多个）。",
+      "killOnHostExit": true
+    },
+    {
+      "id": "demo-dshpet",
+      "label": "示例：dsh-pet 桌宠（显示/隐藏）",
+      "enabled": true,
+      "kind": "dshpet",
+      "configFile": "C:\\Users\\YOU\\.dsh\\dsh-pet\\main-config.jsonc",
+      "apiBase": "/dsh-pet-7340",
+      "helperPath": "C:\\Users\\YOU\\.dsh\\electron\\electron.exe",
+      "hideOnHostStart": false,
+      "note": "kind=dshpet：窗口由 dsh-pet 插件自己拉起的 Electron helper 承载，插件只能让它显示/隐藏（改 display 后 PUT 回 /dsh-pet-xxx/config）。hideOnHostStart=true = 每次 DSH 启动都收回 none（不随宿主自启）。"
+    }
+  ]
+}

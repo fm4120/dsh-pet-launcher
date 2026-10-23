@@ -1,0 +1,14 @@
+{
+  "name": "dsh-pet-launcher",
+  "version": "0.1.0",
+  "description": "桌宠启动器浮窗：DSH 桌面端界面上每只桌宠一行，一个按钮起/停。",
+  "type": "module",
+  "main": "lib/index.js",
+  "files": ["lib", "pets.example.json", "cordis.patch.yml", "README.md"],
+  "scripts": {
+    "test": "node test/routes.mjs"
+  },
+  "dsh": { "bundle": { "patch": "./cordis.patch.yml" } },
+  "keywords": ["dsh", "deepseek-harness", "plugin", "desktop-pet", "widget"],
+  "license": "MIT"
+}
